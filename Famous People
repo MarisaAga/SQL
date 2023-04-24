@@ -1,0 +1,54 @@
+CREATE TABLE artists_of_interest (id INTEGER PRIMARY KEY, first_name TEXT, last_name TEXT, city TEXT);
+
+
+INSERT INTO artists_of_interest (first_name, last_name, city)
+VALUES ("MaryLou", "Adams", "Phoenix"); 
+INSERT INTO artists_of_interest (first_name, last_name, city)
+VALUES ("Kristy", "Jackson", "Detroit");
+INSERT INTO artists_of_interest (first_name, last_name, city)
+VALUES ("Lisa", "Rodgers", "Los Angeles");
+
+SELECT * FROM artists_of_interest;
+
+CREATE TABLE spouse (id INTEGER PRIMARY KEY, first_name TEXT, last_name TEXT); 
+INSERT INTO spouse (first_name, last_name)
+VALUES ("Conner", "Adams");
+INSERT INTO spouse (first_name, last_name)
+VALUES ("Chris", "Smith");
+INSERT INTO spouse (first_name, last_name)
+VALUES ("Peter", "Rodgers");
+INSERT INTO spouse (first_name, last_name)
+VALUES ("Kay", "Jackson");
+
+select * from spouse;
+
+
+CREATE TABLE songs (id INTEGER PRIMARY KEY, title TEXT,last_name TEXT);
+INSERT INTO songs (title, last_name)
+VALUES ("You Are My Heart", "Adams");
+INSERT INTO songs (title, last_name)
+VALUES ("Lets go on a Junket", "Adams");
+INSERT INTO songs (title, last_name)
+VALUES ("Baby Cakes", "Smith");
+INSERT INTO songs (title, last_name)
+VALUES ("Love Me Baby", "Jackson");
+INSERT INTO songs (title, last_name)
+VALUES ("Smelly Cat", "Phoebe");
+INSERT INTO songs (title, last_name)
+VALUES ("My Land", "Geronimo");
+INSERT INTO songs (title, last_name)
+VALUES ("Dirty Laundry", "Rodgers");
+
+select * from songs;
+
+**display artists and their songs**
+SELECT artists_of_interest.first_name, songs.title, artists_of_interest.city
+FROM artists_of_interest
+JOIN songs
+ON artists_of_interest.last_name = songs.last_name; 
+
+**display songwriter's spouses**
+SELECT spouse.first_name AS "spouse's first name", spouse.last_name, songs.title AS "song title"
+FROM songs
+JOIN spouse
+ON spouse.last_name = songs.last_name; 
